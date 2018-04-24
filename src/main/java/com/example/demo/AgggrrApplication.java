@@ -5,6 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.demo.model.LineItem;
+import com.example.demo.model.Order;
+import com.example.demo.model.OrderRepository;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -16,8 +20,14 @@ public class AgggrrApplication {
 	}
 
 	@Bean
-	public CommandLineRunner doIt() {
-		return args -> log.info("No way!");
+	public CommandLineRunner doIt(OrderRepository orders) {
+		return args -> {
+
+			Order o = new Order();
+			o.addLineItem(new LineItem());
+			orders.save(o);
+
+		};
 	}
 
 }
