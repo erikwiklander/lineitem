@@ -13,11 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
 @Setter
 @Getter
-@Entity
+@NoArgsConstructor
 @Table(name = "cool_order")
 public class Order {
 
@@ -29,7 +31,11 @@ public class Order {
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "order_id")
-	private List<LineItem> items = new ArrayList<>();
+	private final List<LineItem> items = new ArrayList<>();
+
+	public Order(String name) {
+		this.name = name;
+	}
 
 	public void addLineItem(LineItem item) {
 		items.add(item);

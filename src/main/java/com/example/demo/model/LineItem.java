@@ -6,11 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
+@Entity
 @Setter
 @Getter
-@Entity
+@ToString
+@NoArgsConstructor
 public class LineItem {
 
 	@Id
@@ -18,5 +22,9 @@ public class LineItem {
 	private Long id;
 
 	private String name;
+
+	public LineItem(String name) {
+		this.name = name;
+	}
 
 }
