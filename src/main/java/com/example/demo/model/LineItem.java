@@ -23,6 +23,8 @@ public class LineItem {
 
 	private String name;
 
+	private int index;
+
 	public LineItem(String name) {
 		this.name = name;
 	}
